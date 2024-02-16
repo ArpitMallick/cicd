@@ -1,6 +1,5 @@
 FROM amazonlinux:latest
 
-# Update package repository and install httpd, wget, and unzip
 RUN yum update -y && \
     yum install -y httpd wget unzip && \
     yum clean all
@@ -18,7 +17,7 @@ RUN mv carvilla-v1.0/* . && \
     rm -rf carvilla-v1.0
 
 # Expose port 80 for accessing the Apache server
-EXPOSE 80
+EXPOSE 8000
 
 # Start httpd service with daemon off
 CMD ["/usr/sbin/httpd", "-D", "FOREGROUND"]
